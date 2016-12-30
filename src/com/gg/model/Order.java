@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+@Table(name="OrderDetails")
 public class Order implements Serializable {
 
 	
