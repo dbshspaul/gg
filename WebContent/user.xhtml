@@ -42,6 +42,14 @@
 				<p:outputLabel for="dob" value="Date of birth:" />
 				<p:calendar id="dob" required="true" value="#{user.user.dateOfBirth}" />
 				<p:message for="dob" />
+				
+				<p:outputLabel for="password" value="Password:" />
+				<p:password id="password" required="true" value="#{user.user.password}" feedback="true" match="conpass"/>
+				<p:message for="password" />
+				
+				<p:outputLabel for="conpass" value="Confirm Password:" />
+				<p:password id="conpass" required="true" match="password"/>
+				<p:message for="conpass" />
 			</h:panelGrid>
 
 			<p:commandButton id="submitButton" value="Submit" actionListener="#{user.addNewUser}" />
