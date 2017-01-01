@@ -4,7 +4,6 @@ import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 import javax.ejb.EJB;
 import javax.json.Json;
@@ -23,8 +22,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gg.model.Category;
 import com.gg.model.SubCategory;
 import com.gg.transaction.Ejb;
@@ -96,21 +93,23 @@ public class JaxRS {
 			subCategory.setDescription(description);
 			subCategory.setName(name);
 			ejb.setData(subCategory);
-			generator.writeStartObject().write("asdsad","sadsad").writeEnd().close();
-			response=Response.status(HttpURLConnection.HTTP_OK).entity(sw.toString()).build();
+			generator.writeStartObject().write("asdsad", "sadsad").writeEnd().close();
+			response = Response.status(HttpURLConnection.HTTP_OK).entity(sw.toString()).build();
 		} catch (Exception e) {
 			throw new WebApplicationException(
-					response=Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity("Invalid request").build());
+					response = Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity("Invalid request").build());
 		}
 		return response;
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/category")
-	public Response getCategories(){	
+	public Response getCategories() {
 		try {
-			GenericEntity<List<Category>> entity=new GenericEntity<List<Category>>(ejb.getEntities(Category.class)){};
+			GenericEntity<List<Category>> entity = new GenericEntity<List<Category>>(
+					ejb.getAllEntities(Category.class)) {
+			};
 			return Response.ok().entity(entity).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,13 +117,15 @@ public class JaxRS {
 					Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity("Invalid request").build());
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/subcategory")
-	public Response getSubCategories(){	
+	public Response getSubCategories() {
 		try {
-			GenericEntity<List<SubCategory>> entity=new GenericEntity<List<SubCategory>>(ejb.getEntities(SubCategory.class)){};
+			GenericEntity<List<SubCategory>> entity = new GenericEntity<List<SubCategory>>(
+					ejb.getAllEntities(SubCategory.class)) {
+			};
 			return Response.ok().entity(entity).build();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,10 +133,7 @@ public class JaxRS {
 					Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity("Invalid request").build());
 		}
 	}
-	
-	
-	
-	
+
 	/*********************************************************************************************************************/
 
 	@Override

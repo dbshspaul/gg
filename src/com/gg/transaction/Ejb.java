@@ -20,7 +20,7 @@ public class Ejb {
 		em.persist(entity);
 	}
 
-	public <T> List<T> getEntities(Class<T> c) {
+	public <T> List<T> getAllEntities(Class<T> c) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(c);
 		Root<T> from = cq.from(c);

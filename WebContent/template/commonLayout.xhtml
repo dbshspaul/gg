@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	
+
 </h:head>
 
 <h:body>
@@ -14,26 +14,30 @@
 
 		<p:layout style="min-width:400px;min-height:768px;">
 			<p:layoutUnit position="north" resizable="true" size="100" minSize="40" maxSize="200" style="min-height:140px;">
-        		<ui:insert name="header">
+				<ui:insert name="header">
 					<ui:include src="/template/commonHeader.xhtml" />
 				</ui:insert>
 				<ui:insert name="breadcrumb">
 					<ui:include src="/template/breadcrumbMenu.xhtml" />
 				</ui:insert>
-   			</p:layoutUnit>
-   			
+			</p:layoutUnit>
+
 			<p:layoutUnit position="west" resizable="true" size="100" minSize="310">
-        		<ui:insert name="sidemenu">
+				<ui:insert name="sidemenu">
 					<ui:include src="/template/commonSidemenu.xhtml" />
 				</ui:insert>
-   			</p:layoutUnit>
+			</p:layoutUnit>
 
 			<p:layoutUnit position="center">
-       			 <ui:insert name="body">
+				<ui:insert name="body">
 					<ui:include src="/template/commonBody.xhtml" />
 				</ui:insert>
-    		</p:layoutUnit>
+			</p:layoutUnit>
 		</p:layout>
+
+		<ui:insert name="ontextmenu">
+			<ui:include src="/template/contextMenu.xhtml" />
+		</ui:insert>
 
 	</div>
 

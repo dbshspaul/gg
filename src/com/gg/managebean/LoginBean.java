@@ -34,4 +34,9 @@ public class LoginBean {
 			return "login";
 		}
 	}
+	
+	public String logout(){
+		ManageSession.getSession().removeAttribute("username");
+		return "login";
+	}
 }
