@@ -9,6 +9,5 @@
 		<locale-config>
 			<default-locale>en</default-locale>
 		</locale-config>
-	</application>
-
+	</application>	
 </faces-config>

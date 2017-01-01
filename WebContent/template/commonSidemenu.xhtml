@@ -8,6 +8,11 @@
 	<ui:composition>
 		<h:form>
 			<p:panelMenu style="width:300px">
+				<p:submenu label="Admin">
+					<p:menuitem value="Add new user" action="#{navigation.navigateAddUser}" icon="fa fa-user-plus"/>
+					<p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" />
+				</p:submenu>
+				<p:separator />
 				<p:submenu label="Ajax Menuitems">
 					<p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" />
 					<p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" />
