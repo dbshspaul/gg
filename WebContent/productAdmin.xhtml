@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="template/commonLayout.xhtml">
+		<ui:define name="breadcrumb">
+			<h:form>
+				<p:breadCrumb>
+					<p:menuitem value="Home" actionListener="#{navigation.navigateMain}" />
+					<p:menuitem value="Manage Product" />
+				</p:breadCrumb>
+			</h:form>
+		</ui:define>
+		<ui:define name="body">
+			<p:messages id="msg" showDetail="true" autoUpdate="true" closable="true" />
+			<p:panelGrid>
+				<f:facet name="header">
+					<h3 style="text-align: center;">Manage product</h3>
+				</f:facet>
+				<p:row style="text-align: center;">
+					<p:column>
+						<p:panelGrid>
+							<h:form>
+								<h:panelGrid id="grid" columns="3" cellpadding="5">
+									<p:outputLabel for="name" value="Name:" />
+									<p:inputText id="name" required="true" value="#{product.category.name}" />
+									<p:message for="name" />
+
+									<p:outputLabel for="desc" value="Description:" />
+									<p:inputTextarea id="desc" required="true" value="#{product.category.description}" />
+									<p:message for="desc" />
+
+								</h:panelGrid>
+
+								<p:commandButton id="submitButton" value="Submit" update="grid :data_table" action="#{product.createCategory}" />
+							</h:form>
+						</p:panelGrid>
+					</p:column>
+					<p:column>
+						<p:dataTable var="cat" value="#{product.getAllCategories()}" id="data_table" selectionMode="single" selection="#{product.selectCategory()}" rowKey="#{cat.id}">
+							<p:column headerText="Name">
+								<h:outputText value="#{cat.name}" />
+							</p:column>
+
+							<p:column headerText="Description">
+								<h:outputText value="#{cat.description}" />
+							</p:column>
+
+							<p:column headerText="Created on">
+								<h:outputText value="#{cat.createdDateTime}">
+									<f:convertDateTime pattern="dd.MM.yyyy hh:mm a" />
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="Is Active">
+								<h:outputText value="#{cat.active}" />
+							</p:column>
+
+						</p:dataTable>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

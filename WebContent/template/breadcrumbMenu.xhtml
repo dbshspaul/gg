@@ -5,8 +5,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition>
-	<p:breadCrumb>
-		<p:menuitem value="Home" url="main.xhtml" />
-	</p:breadCrumb>
+
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Home" actionListener="#{navigation.navigateMain}" />
+		</p:breadCrumb>
+	</h:form>
+
 </ui:composition>
 </html>

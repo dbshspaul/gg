@@ -2,13 +2,13 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"> 
 
 <ui:composition template="template/commonLayout.xhtml">
 	<ui:define name="breadcrumb">
 		<h:form>
 			<p:breadCrumb>
-				<p:menuitem value="Home" url="main.xhtml" />
+				<p:menuitem value="Home" actionListener="#{navigation.navigateMain}" />
 				<p:menuitem value="Add new user" />
 			</p:breadCrumb>
 		</h:form>
@@ -25,7 +25,7 @@
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
 				<p:outputLabel for="userName" value="Urer Name:" />
 				<p:inputText id="userName" required="true" value="#{user.user.userName}" />
-				<p:message for="userName" />
+				<p:message for="userName"/>
 
 				<p:outputLabel for="name" value="Name:" />
 				<p:inputText id="name" required="true" value="#{user.user.name}" />
@@ -48,11 +48,11 @@
 				<p:message for="password" />
 				
 				<p:outputLabel for="conpass" value="Confirm Password:" />
-				<p:password id="conpass" required="true" match="password"/>
+				<p:password id="conpass" required="true" value="#{user.user.password}"/>
 				<p:message for="conpass" />
 			</h:panelGrid>
 
-			<p:commandButton id="submitButton" value="Submit" actionListener="#{user.addNewUser}" />
+			<p:commandButton id="submitButton" value="Submit" action="#{user.addNewUser}"/>
 		</h:form>
 	</ui:define>
 </ui:composition>
